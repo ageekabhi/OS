@@ -1,35 +1,50 @@
-# Embedded Linux OS & Device Driver Development
+# Operating Systems & Embedded Linux
 
-My daily learning journey from Linux fundamentals to
-Embedded Linux and Linux Device Driver Development.
+A collection of Operating System concepts implemented in C,
+along with my learning journey in Embedded Linux and
+Linux Device Driver Development.
 
-## Existing CDAC Practical Work
+## 1. Existing OS Practical Implementations
+
 - Process Creation
 - Process Management
+- Exec System Calls
 - Inter Process Communication (IPC)
 - Pipes
 - Threads
+- Semaphores
+- Mutexes
 - Process Synchronization
-- Exec System Calls
 
-## Learning Roadmap
+## 2. Embedded Linux Learning Roadmap
+
 - Linux Fundamentals
+- Linux Command Line
+- C Programming for Linux
 - Linux System Programming
-- C Programming
-- Linux Kernel
-- Device Drivers
-- GPIO, I2C, SPI, UART
+- Linux Kernel Fundamentals
+- Linux Device Drivers
 - Device Tree
+- GPIO, I2C, SPI, UART
 - Kernel Modules
 - Buildroot
 - Yocto Project
 
-## Development Environment
-- OS: Zorin OS 18.1
-- Language: C
+## 3. Development Environment
+
+- Operating System: Zorin OS 18.1
+- Programming Language: C
 - Version Control: Git
-- Editor: VS Code / Vim
+- Platform: Linux
 
-## Daily Goal
-One hour of learning and practical implementation every day.
+## 4. Learning Goal
 
+To develop practical skills in Operating Systems,
+Embedded Linux, Linux Kernel Programming,
+and Device Driver Development.
+
+## 5. Daily Learning
+
+I dedicate one hour every day to learning,
+practical implementation, documentation,
+and GitHub contributions.
