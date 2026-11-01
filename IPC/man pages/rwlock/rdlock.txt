@@ -1,0 +1,73 @@
+PTHREAD_RWLOCK_RDLOCK(3)    Library Functions Manual  PTHREAD_RWLOCK_RDLOCK(3)
+
+NAME
+       pthread_rwlock_rdlock, pthread_rwlock_tryrdlock -- acquire a read/write
+       lock for	reading
+
+LIBRARY
+       POSIX Threads Library (libpthread, -lpthread)
+
+SYNOPSIS
+       #include	<pthread.h>
+
+       int
+       pthread_rwlock_rdlock(pthread_rwlock_t *lock);
+
+       int
+       pthread_rwlock_tryrdlock(pthread_rwlock_t *lock);
+
+DESCRIPTION
+       The  pthread_rwlock_rdlock() function acquires a	read lock on lock pro-
+       vided that lock is not presently	held for writing and no	writer threads
+       are presently blocked on	the lock.  If the read lock cannot be  immedi-
+       ately  acquired,	 the  calling  thread  blocks until it can acquire the
+       lock.
+
+       The pthread_rwlock_tryrdlock() function performs	the same  action,  but
+       does  not  block	 if the	lock cannot be immediately obtained (i.e., the
+       lock is held for	writing	or there are waiting writers).
+
+       A  thread  may  hold  multiple	concurrent   read   locks.    If   so,
+       pthread_rwlock_unlock() must be called once for each lock obtained.
+
+       The  results  of	acquiring a read lock while the	calling	thread holds a
+       write lock are undefined.
+
+IMPLEMENTATION NOTES
+       To prevent writer starvation, writers are favored over readers.
+
+RETURN VALUES
+       If	successful,	  the	    pthread_rwlock_rdlock()	   and
+       pthread_rwlock_tryrdlock()  functions  will  return zero.  Otherwise an
+       error number will be returned to	indicate the error.
+
+ERRORS
+       The pthread_rwlock_tryrdlock() function will fail if:
+
+       [EBUSY]		  The lock could not  be  acquired  because  a	writer
+			  holds	the lock or was	blocked	on it.
+
+       The  pthread_rwlock_rdlock()  and  pthread_rwlock_tryrdlock() functions
+       may fail	if:
+
+       [EAGAIN]		  The lock could not be	acquired because  the  maximum
+			  number of read locks against lock has	been exceeded.
+
+       [EDEADLK]	  The current thread already owns lock for writing.
+
+       [EINVAL]		  The value specified by lock is invalid.
+
+       [ENOMEM]		  Insufficient	memory	exists	to initialize the lock
+			  (applies to statically initialized locks only).
+
+SEE ALSO
+       pthread_rwlock_init(3),			  pthread_rwlock_trywrlock(3),
+       pthread_rwlock_unlock(3), pthread_rwlock_wrlock(3)
+
+STANDARDS
+       The  pthread_rwlock_rdlock()  and  pthread_rwlock_tryrdlock() functions
+       are expected to conform to Version 2 of the Single  UNIX	 Specification
+       ("SUSv2").
+
+HISTORY
+       The pthread_rwlock_rdlock() function first appeared in FreeBSD 3.0.

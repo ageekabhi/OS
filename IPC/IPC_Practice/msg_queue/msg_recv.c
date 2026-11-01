@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/mman.h>
+#include<fcntl.h>
+#include<mqueue.h>
+#include<string.h>
+
+int main(){
+mqd_t mq = mq_open("/myqueue",O_RDONLY);
+
+char buff[100];
+mq_receive(mq,buff,100,NULL);
+
+printf("Received : %s \n " ,buff);
+
+mq_close(mq);
+}
